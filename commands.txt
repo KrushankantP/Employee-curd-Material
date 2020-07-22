@@ -1,0 +1,42 @@
+PART - 1 Curd From Design
+
+1. ng new Employee-curd-Material --skipTest=true
+
+2. npm i --s @angular/material @angular/animations.
+All Material command will be here.
+https://material.angular.io/guide/getting-started
+https://material.angular.io/guide/theming
+theme I have used here is : @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+3.  for Icons Add this link in index.html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+4. Create Employee Components
+ng g c employees
+
+5. ng g c employees/employee
+
+6. ng g s shared/employee
+
+7. ng g m material
+
+
+
+material imports and exports classes for different Material tags
+
+0. MatToolbarModule --> <mat-toolbar>
+1. MatGridListModule --> <mat-grid-tile>
+2. MatFormFieldModule --> <mat-form-field>, <mat-error>
+3. InputModule --> mat-input-> input text tag directive --> InputModule
+4. MatRadioModule --> <mat-radio-group>, <mat-radio-button> 
+5. MatSelectModule-->  <mat-select>, <mat-option> 
+6. MatDatePickerModule(Dependent Module=> MatNAtiveDateModule) --> <mat-datepicker-toggle [matDatepicker]="picker">, <mat-datepicker matSuffix [for]="picker">
+
+7. MatCheckBoxModule --> <mat-checkbox> 
+8. MatButtonModule --> button directive --mat raised-button
+
+
+
+PART -2
+
+ 
