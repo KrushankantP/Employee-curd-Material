@@ -8,6 +8,10 @@ import { EmployeeFormComponent } from './Employee/employee-form/employee-form.co
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EmployeeService} from "./shared/employee.service";
+import {AngularFireModule} from "@angular/fire";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {environment} from "../environments/environment";
+
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import {EmployeeService} from "./shared/employee.service";
     MaterialModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
