@@ -11,6 +11,7 @@ import {EmployeeService} from "./shared/employee.service";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {environment} from "../environments/environment";
+import {DepartmentService} from "./shared/department.service";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {environment} from "../environments/environment";
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService,
+  DepartmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,16 +25,16 @@
       <div class="controls-container">
         <div class="add-bottom-padding">
           <mat-radio-group formControlName="gender">
-            <mat-radio-button value="1">Male</mat-radio-button>
-            <mat-radio-button value="2">Female</mat-radio-button>
-            <mat-radio-button value="3">Other</mat-radio-button>
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button value="Other">Other</mat-radio-button>
           </mat-radio-group>
         </div>
         <mat-form-field>
           <mat-select formControlName="department" placeholder="Department">
             <mat-option>None</mat-option>
-            <ng-container *ngFor="let department of departments">
-              <mat-option value="{{department.id}}">{{department.value}}</mat-option>
+            <ng-container *ngFor="let department of _deptService.array">
+              <mat-option value="{{department.code}}">{{department.code}}--{{department.name}}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>

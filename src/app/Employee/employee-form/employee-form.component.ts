@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "../../shared/employee.service";
+import {DepartmentService} from "../../shared/department.service";
 
 @Component({
   selector: 'employee-form',
@@ -8,7 +9,8 @@ import {EmployeeService} from "../../shared/employee.service";
 })
 export class EmployeeFormComponent implements OnInit {
 
-  constructor(public _empService: EmployeeService) { }
+  constructor(public _empService: EmployeeService,
+              public  _deptService: DepartmentService) { }
 
   departments = [
     { id: 1, value: 'IT' },
