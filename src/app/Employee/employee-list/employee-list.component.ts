@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EmployeeService} from "../../shared/employee.service";
 
 @Component({
   selector: 'employee-list',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _empService: EmployeeService) { }
 
   ngOnInit(): void {
+    this._empService.getEmployees().subscribe(
+      list => {
+        let array = list.map(item => {
+          return {
+            $key: item.key,
+            ...item.payload.val()
+          };
+        });
+      });
   }
-
 }
