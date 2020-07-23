@@ -19,11 +19,18 @@ export class EmployeeFormComponent implements OnInit {
 
 
   ngOnInit() {
+    this._empService.getEmployees();
   }
 
   onClear() {
     this._empService.form.reset();
     this._empService.initializeFormGroup();
   }
-
+  onSubmit(){
+    if(this._empService.form.valid){
+      this._empService.insertEmployee(this._empService.form.value);
+      this._empService.form.reset();
+      this._empService.initializeFormGroup();
+    }
+  }
 }
