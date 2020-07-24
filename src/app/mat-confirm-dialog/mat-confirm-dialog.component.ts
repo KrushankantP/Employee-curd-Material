@@ -13,10 +13,11 @@ export class MatConfirmDialogComponent implements OnInit {
   constructor(@Inject (MAT_DIALOG_DATA) public data) { }
   //need to give reference to the dialogComponent.
   public dialogRef:MatDialogRef<MatConfirmDialogComponent>
+
   ngOnInit(): void {
   }
 
   closeDialog() {
-    this.dialogRef.close()
+    this.dialogRef.close(false)
   }
 }

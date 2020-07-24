@@ -81,10 +81,16 @@ export class EmployeeListComponent implements OnInit {
     this._dialog.open(EmployeeFormComponent,dialogConfig);
   }
   onDelete($key){
-    // if(confirm('Are you sure to delete this record ?')){
-    //   this._empService.deleteEmployee($key);
-    //   this._notificationService.warn('! Deleted successfully');
-    //}
     this._dialogService.openConfirmDialog('Are you sure to Delete this record?')
+      //this will check whether response is true or false afterClosed.
+      .afterClosed().subscribe(res=>{
+        if(res){
+          this._empService.deleteEmployee($key);
+          this._notificationService.warn('! Deleted successfully');
+        }
+        else{
+          console.log(res)
+        }
+    })
   }
 }
