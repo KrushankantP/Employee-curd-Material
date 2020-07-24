@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "../../shared/employee.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'employee-list',
@@ -7,7 +8,8 @@ import {EmployeeService} from "../../shared/employee.service";
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] =['fullName', 'email', 'mobile', 'city']
   constructor(private _empService: EmployeeService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class EmployeeListComponent implements OnInit {
             ...item.payload.val()
           };
         });
+        this.listData = new MatTableDataSource(array);
       });
   }
 }
