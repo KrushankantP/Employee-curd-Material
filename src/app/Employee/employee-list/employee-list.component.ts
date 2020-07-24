@@ -85,6 +85,6 @@ export class EmployeeListComponent implements OnInit {
     //   this._empService.deleteEmployee($key);
     //   this._notificationService.warn('! Deleted successfully');
     //}
-    this._dialogService.openConfirmDialog()
+    this._dialogService.openConfirmDialog('Are you sure to Delete this record?')
   }
 }
