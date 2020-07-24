@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {EmployeeService} from "../../shared/employee.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'employee-list',
@@ -10,9 +11,11 @@ import {MatSort} from "@angular/material/sort";
 })
 export class EmployeeListComponent implements OnInit {
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =['fullName', 'email', 'mobile', 'city', 'actions']
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'actions']
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
     constructor(private _empService: EmployeeService) { }
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class EmployeeListComponent implements OnInit {
         });
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
+        this.listData.paginator = this.paginator;
       });
   }
 }

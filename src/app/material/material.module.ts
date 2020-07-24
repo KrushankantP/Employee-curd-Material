@@ -14,6 +14,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import {MatSortModule} from "@angular/material/sort";
     MatTableModule,
     MatIconModule,
     MatSortModule,
-
+    MatPaginatorModule,
   ],
 
 })
