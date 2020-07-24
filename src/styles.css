@@ -41,8 +41,17 @@ snack-bar-container.success {
   color : #fff;
 }
 
-
 snack-bar-container.notification simple-snack-bar{
   font-size: 18px !important;
   font-weight: bold;
+}
+
+.hide{
+  display: none;
+}
+
+/* mat-table */
+mat-footer-row mat-footer-cell{
+  justify-content: center;
+  font-style: italic;
 }
