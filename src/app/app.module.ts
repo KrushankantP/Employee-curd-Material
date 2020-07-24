@@ -13,6 +13,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {environment} from "../environments/environment";
 import {DepartmentService} from "./shared/department.service";
 import { EmployeesComponent } from './Employee/employees.component';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { EmployeesComponent } from './Employee/employees.component';
     AppComponent,
     EmployeeListComponent,
     EmployeeFormComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,6 @@ import { EmployeesComponent } from './Employee/employees.component';
     EmployeeService,
     DepartmentService],
   bootstrap: [AppComponent],
-  entryComponents:[EmployeeFormComponent]
+  entryComponents:[EmployeeFormComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

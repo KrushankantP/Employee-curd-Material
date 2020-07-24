@@ -7,6 +7,7 @@ import {DepartmentService} from "../../shared/department.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {EmployeeFormComponent} from "../employee-form/employee-form.component";
 import {NotificationService} from "../../shared/notification.service";
+import {DialogService} from "../../shared/dialog.service";
 
 @Component({
   selector: 'employee-list',
@@ -24,7 +25,8 @@ export class EmployeeListComponent implements OnInit {
   constructor(private _empService: EmployeeService,
               private _deptService: DepartmentService,
               private _dialog: MatDialog,
-              private _notificationService:  NotificationService) { }
+              private _notificationService:  NotificationService,
+              private _dialogService: DialogService) { }
 
   ngOnInit(): void {
     this._empService.getEmployees().subscribe(
@@ -79,9 +81,10 @@ export class EmployeeListComponent implements OnInit {
     this._dialog.open(EmployeeFormComponent,dialogConfig);
   }
   onDelete($key){
-    if(confirm('Are you sure to delete this record ?')){
-      this._empService.deleteEmployee($key);
-      this._notificationService.warn('! Deleted successfully');
-    }
+    // if(confirm('Are you sure to delete this record ?')){
+    //   this._empService.deleteEmployee($key);
+    //   this._notificationService.warn('! Deleted successfully');
+    //}
+    this._dialogService.openConfirmDialog()
   }
 }
