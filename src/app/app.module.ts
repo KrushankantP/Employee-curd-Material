@@ -35,6 +35,7 @@ import { EmployeesComponent } from './Employee/employees.component';
   providers: [
     EmployeeService,
     DepartmentService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[EmployeeFormComponent]
 })
 export class AppModule { }

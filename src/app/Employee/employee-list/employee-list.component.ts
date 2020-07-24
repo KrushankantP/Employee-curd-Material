@@ -4,6 +4,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {DepartmentService} from "../../shared/department.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {EmployeeFormComponent} from "../employee-form/employee-form.component";
 
 @Component({
   selector: 'employee-list',
@@ -19,7 +21,8 @@ export class EmployeeListComponent implements OnInit {
   searchKey: string;
 
   constructor(private _empService: EmployeeService,
-              private _deptService: DepartmentService) { }
+              private _deptService: DepartmentService,
+              private _dialog: MatDialog) { }
 
   ngOnInit(): void {
     this._empService.getEmployees().subscribe(
@@ -54,5 +57,14 @@ export class EmployeeListComponent implements OnInit {
 
   applyFilter() {
     this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  onCreate() {
+    this._empService.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this._dialog.open(EmployeeFormComponent,dialogConfig);
   }
 }
