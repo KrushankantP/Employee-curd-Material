@@ -3,7 +3,7 @@ import {EmployeeService} from "../../shared/employee.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
-import {filter} from "rxjs/operators";
+import {DepartmentService} from "../../shared/department.service";
 
 @Component({
   selector: 'employee-list',
@@ -13,19 +13,24 @@ import {filter} from "rxjs/operators";
 export class EmployeeListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'actions']
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'departmentName', 'actions']
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
-  constructor(private _empService: EmployeeService) { }
+  constructor(private _empService: EmployeeService,
+              private _deptService: DepartmentService) { }
 
   ngOnInit(): void {
     this._empService.getEmployees().subscribe(
       list => {
         let array = list.map(item => {
+          // to display departmentName from department node(collection) based on $key
+          let departmentName = this._deptService.getDepartmentName(item.payload.val()['department']);
           return {
             $key: item.key,
+            //Added name here.
+            departmentName,
             ...item.payload.val()
           };
         });
